@@ -1,17 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <Button :text="showEmployees?'Hide':'Show'" @btn-clicked="toggleShowEmployees" :showEmployees="showEmployees"/>
+  <div v-if="showEmployees">
+    <Employee/>
+  </div>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Employee from './components/EmployeeView.vue'
+import Button from './components/ButtonView.vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  components: {Employee,Button},
+  data(){
+    return{
+      showEmployees: false
+    }
+  },
+  methods:{
+    toggleShowEmployees(){
+      this.showEmployees = !this.showEmployees
+    },
   }
-}
+};
 </script>
 
 <style>
